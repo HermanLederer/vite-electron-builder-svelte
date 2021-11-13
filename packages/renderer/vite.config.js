@@ -1,9 +1,9 @@
 /* eslint-env node */
 
-import {chrome} from '../../electron-vendors.config.json';
-import {join} from 'path';
-import {builtinModules} from 'module';
-import vue from '@vitejs/plugin-vue';
+import { chrome } from '../../electron-vendors.config.json';
+import { join } from 'path';
+import { builtinModules } from 'module';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -16,15 +16,15 @@ const config = {
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
-    },
+      '/@/': join(PACKAGE_ROOT, 'src') + '/'
+    }
   },
-  plugins: [vue()],
+  plugins: [svelte()],
   base: '',
   server: {
     fs: {
-      strict: true,
-    },
+      strict: true
+    }
   },
   build: {
     sourcemap: true,
@@ -32,13 +32,11 @@ const config = {
     outDir: 'dist',
     assetsDir: '.',
     rollupOptions: {
-      external: [
-        ...builtinModules,
-      ],
+      external: [...builtinModules]
     },
     emptyOutDir: true,
-    brotliSize: false,
-  },
+    brotliSize: false
+  }
 };
 
 export default config;
