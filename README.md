@@ -20,7 +20,7 @@ Under the hood is used [Vite] — super fast, nextgen bundler, and [electron-bui
 
 - This fork is maintained by [Herman Lederer][hermanlederer-github]. You can [💖 sponsor them][hermanlederer-sponsor] for continued mainenance of this Svelte fork.
 
-- Found a problem? Pull requests are welcome, but make sure it is is Svelte specific, otherwise consider fixing the proble in the [original repo](https://github.com/cawa-93/vite-electron-builder). The cahnges will be cloned here.
+- Found a problem? Pull requests are welcome, but make sure it is is Svelte specific, otherwise consider making a PR to the [original repo](https://github.com/cawa-93/vite-electron-builder). The cahnges will be cloned here.
 
 - If you have ideas, questions or suggestions - **Welcome to [discussions](https://github.com/cawa-93/vite-electron-builder/discussions) of the original repo**. 😊
 
@@ -88,15 +88,15 @@ Vite provides you with many useful features, such as: `TypeScript`, `TSX/JSX`, `
 
 ## Status
 
-TGhe origianl template was created to make the original author's work easier but they are trying to keep in universal wuth Vue as the default framework. This for replaces it with Svelte.
+The origianl template was created to make the [original author's][cawa-93-github] work easier but they are trying to keep in universal with Vue as the default framework. This fork replaces it with Svelte.
 
-Me and the original author are actively involved in its development. But we do not guarantee that this template will be maintained in the future.
+[Me][hermanlederer-github] and the [original author][cawa-93-github] are actively involved in its development. But we do not guarantee that this template will be maintained in the future.
 
 **At the moment, there are the following problems:**
 
 - ⚠ Playwright has [**experimental** support for Electron](https://playwright.dev/docs/api/class-electron/).
 - ⚠ Release notes are created automatically based on commit history. [`.github/actions/release-notes`](.github/actions/release-notes) is used for generation. It may not provide some scenarios. If you encounter a problem - write about it.
-- ⏳ The original author wants to migrate all code base to ESM. But because Nodejs ecosystem is unprepared he has not known whether this will give more benefits or more inconvenience.
+- ⏳ The [original author][cawa-93-github] wants to migrate all code base to ESM. But because Nodejs ecosystem is unprepared he has not known whether this will give more benefits or more inconvenience.
 
 Some improvement or problems can be listed in [issues of the original repo](https://github.com/cawa-93/vite-electron-builder/issues).
 
