@@ -1,5 +1,5 @@
 {
-  "name": "vite-electron-builder",
+  "name": "vite-electron-builder-svelte",
   "private": true,
   "engines": {
     "node": ">=v16.13",
