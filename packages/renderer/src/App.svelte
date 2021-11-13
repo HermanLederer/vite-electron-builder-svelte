@@ -5,7 +5,7 @@
 
 <main>
   <img src={logo} alt="Svelte Logo" />
-  <h1>Hello Typescript!</h1>
+  <h1>Hello Electron!</h1>
 
   <Counter />
 
