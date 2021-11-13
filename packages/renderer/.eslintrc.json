@@ -3,10 +3,7 @@
     "browser": true,
     "node": false
   },
-  "extends": [
-    /** @see https://eslint.vuejs.org/rules/ */
-    "@sveltejs"
-  ],
+  "extends": ["@sveltejs"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 12,
