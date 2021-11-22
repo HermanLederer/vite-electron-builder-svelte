@@ -20,7 +20,7 @@
     "typecheck": "npm run typecheck-main && npm run typecheck-preload && npm run typecheck-renderer"
   },
   "browserslist": [
-    "Chrome 94"
+    "Chrome 96"
   ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
@@ -34,20 +34,20 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tsconfig/svelte": "^2.0.1",
     "@types/electron-devtools-installer": "2.2.0",
-    "@typescript-eslint/eslint-plugin": "5.3.1",
+    "@typescript-eslint/eslint-plugin": "5.4.0",
     "cross-env": "7.0.3",
-    "electron": "15.3.1",
-    "electron-builder": "22.13.1",
+    "electron": "16.0.1",
+    "electron-builder": "22.14.5",
     "electron-devtools-installer": "3.2.0",
     "eslint": "^7.32.0",
-    "lint-staged": "11.2.6",
+    "lint-staged": "12.1.1",
     "playwright": "1.16.3",
     "simple-git-hooks": "2.7.0",
     "svelte": "^3.44.1",
     "svelte-check": "^2.2.8",
     "svelte-preprocess": "^4.9.8",
     "tslib": "^2.3.1",
-    "typescript": "4.4.4",
+    "typescript": "4.5.2",
     "vite": "2.6.14"
   },
   "dependencies": {
