@@ -31,9 +31,7 @@ const stderrFilterPatterns = [
 ];
 
 /**
- * 
- * @param {{name: string; configFile: string; writeBundle: import('rollup').OutputPlugin['writeBundle'] }} param0 
- * @returns {import('rollup').RollupWatcher}
+ * @param {{name: string; configFile: string; writeBundle: import('rollup').OutputPlugin['writeBundle'] }} param0
  */
 const getWatcher = ({name, configFile, writeBundle}) => {
   return build({
@@ -46,15 +44,14 @@ const getWatcher = ({name, configFile, writeBundle}) => {
 
 /**
  * Start or restart App when source files are changed
- * @param {import('vite').ViteDevServer} viteDevServer
- * @returns {Promise<import('vite').RollupOutput | Array<import('vite').RollupOutput> | import('vite').RollupWatcher>}
+ * @param {{config: {server: import('vite').ResolvedServerOptions}}} ResolvedServerOptions
  */
-const setupMainPackageWatcher = (viteDevServer) => {
-  // Write a value to an environment variable to pass it to the main process.
+const setupMainPackageWatcher = ({config: {server}}) => {
+  // Create VITE_DEV_SERVER_URL environment variable to pass it to the main process.
   {
-    const protocol = `http${viteDevServer.config.server.https ? 's' : ''}:`;
-    const host = viteDevServer.config.server.host || 'localhost';
-    const port = viteDevServer.config.server.port; // Vite searches for and occupies the first free port: 3000, 3001, 3002 and so on
+    const protocol = server.https ? 'https:' : 'http:';
+    const host = server.host || 'localhost';
+    const port = server.port; // Vite searches for and occupies the first free port: 3000, 3001, 3002 and so on
     const path = '/';
     process.env.VITE_DEV_SERVER_URL = `${protocol}//${host}:${port}${path}`;
   }
@@ -71,6 +68,7 @@ const setupMainPackageWatcher = (viteDevServer) => {
     configFile: 'packages/main/vite.config.js',
     writeBundle() {
       if (spawnProcess !== null) {
+        spawnProcess.off('exit', process.exit);
         spawnProcess.kill('SIGINT');
         spawnProcess = null;
       }
@@ -85,6 +83,9 @@ const setupMainPackageWatcher = (viteDevServer) => {
         if (mayIgnore) return;
         logger.error(data, { timestamp: true });
       });
+
+      // Stops the watch script when the application has been quit
+      spawnProcess.on('exit', process.exit);
     },
   });
 };
@@ -92,20 +93,18 @@ const setupMainPackageWatcher = (viteDevServer) => {
 
 /**
  * Start or restart App when source files are changed
- * @param {import('vite').ViteDevServer} viteDevServer
- * @returns {Promise<import('vite').RollupOutput | Array<import('vite').RollupOutput> | import('vite').RollupWatcher>}
+ * @param {{ws: import('vite').WebSocketServer}} WebSocketServer
  */
-const setupPreloadPackageWatcher = (viteDevServer) => {
-  return getWatcher({
+const setupPreloadPackageWatcher = ({ws}) =>
+  getWatcher({
     name: 'reload-page-on-preload-package-change',
     configFile: 'packages/preload/vite.config.js',
     writeBundle() {
-      viteDevServer.ws.send({
+      ws.send({
         type: 'full-reload',
       });
     },
   });
-};
 
 (async () => {
   try {
