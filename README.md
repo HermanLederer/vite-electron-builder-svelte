@@ -237,7 +237,6 @@ See [Contributing Guide](contributing.md).
 [playwright]: https://playwright.dev
 [eslint-plugin-svelte]: https://github.com/sveltejs/eslint-plugin-svelte3
 [vitest]: https://vitest.dev
-[eslint-plugin-vue]: https://github.com/vuejs/eslint-plugin-vue
 [cawa-93-github]: https://github.com/cawa-93/
 [hermanlederer-github]: https://github.com/HermanLederer/
 [cawa-93-sponsor]: https://www.patreon.com/Kozack/
