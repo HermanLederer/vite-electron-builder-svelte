@@ -1,9 +1,9 @@
 /* eslint-env node */
 
-import { chrome } from '../../electron-vendors.config.json';
-import { join } from 'path';
-import { builtinModules } from 'module';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import {chrome} from '../../.electron-vendors.cache.json';
+import {join} from 'path';
+import {builtinModules} from 'module';
+import {svelte} from '@sveltejs/vite-plugin-svelte';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -32,11 +32,17 @@ const config = {
     outDir: 'dist',
     assetsDir: '.',
     rollupOptions: {
-      external: [...builtinModules]
+      input: join(PACKAGE_ROOT, 'index.html'),
+      external: [
+        ...builtinModules.flatMap(p => [p, `node:${p}`]),
+      ],
     },
     emptyOutDir: true,
-    brotliSize: false
-  }
+    brotliSize: false,
+  },
+  test: {
+    environment: 'happy-dom',
+  },
 };
 
 export default config;

@@ -1,4 +1,4 @@
-import {node} from '../../electron-vendors.config.json';
+import {node} from '../../.electron-vendors.cache.json';
 import {join} from 'path';
 import {builtinModules} from 'module';
 
@@ -32,7 +32,7 @@ const config = {
       external: [
         'electron',
         'electron-devtools-installer',
-        ...builtinModules,
+        ...builtinModules.flatMap(p => [p, `node:${p}`]),
       ],
       output: {
         entryFileNames: '[name].cjs',

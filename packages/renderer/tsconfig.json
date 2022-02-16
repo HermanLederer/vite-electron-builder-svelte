@@ -3,8 +3,11 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
     "module": "esnext",
-    "resolveJsonModule": true,
     "baseUrl": ".",
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
@@ -15,6 +18,16 @@
     "allowJs": true,
     "checkJs": true
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte",     "../../types/**/*.d.ts",
-    "../preload/types/electron-api.d.ts"]
+  "include": [
+    "src/**/*.svelte",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "types/**/*.d.ts",
+    "../../types/**/*.d.ts",
+    "../preload/contracts.d.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+  ]
 }

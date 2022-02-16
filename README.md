@@ -1,4 +1,4 @@
-# Vite + Electron Builder + Svelte Boilerplate v2
+# Vite Electron Builder Boilerplate
 
 **Fork of [vite-electron-builder](https://github.com/cawa-93/vite-electron-builder)**
 
@@ -8,9 +8,9 @@
 
 > Vite + Electron + Svelte = 🔥🔥🔥
 
-This is a Svelte specific fork of a secure template for electron applications. Written following the latest safety requirements, recommendations and best practices.
+This is a Svelte specific fork of a template for secure electron applications. Written following the latest safety requirements, recommendations and best practices.
 
-Under the hood is used [Vite] — super fast, nextgen bundler, and [electron-builder] for compilation.
+Under the hood is used [Vite] — superfast, nextgen bundler, and [electron-builder] for compilation.
 
 ---
 
@@ -31,87 +31,70 @@ Under the hood is used [Vite] — super fast, nextgen bundler, and [electron-bui
 Follow these steps to get started with this template:
 
 1. Click the **[Use this template](https://github.com/HermanLederer/vite-electron-builder-svelte/generate)** button (you must be logged in) or just clone this repo.
-2. If you want use another package manager don't forget edit [`.github/workflows`](/.github/workflows) -- it uses `npm` by default.
+2. If you want to use another package manager don't forget to edit [`.github/workflows`](/.github/workflows) -- it uses `npm` by default.
 
 That's all you need. 😉
 
 **Note**: This template uses npm v7 feature — [**Installing Peer Dependencies Automatically**](https://github.com/npm/rfcs/blob/latest/implemented/0025-install-peer-deps.md). If you are using a different package manager, you may need to install some peerDependencies manually.
 
+
+**Note**: Find more useful forks [here](https://github.com/cawa-93/vite-electron-builder/discussions/categories/forks).
+
+
 ## Features
 
 ### Electron [![Electron version](https://img.shields.io/github/package-json/dependency-version/HermanLederer/vite-electron-builder-svelte/dev/electron?label=%20)][electron]
-
-- Template use the latest electron version with all the latest security patches.
+- This template uses the latest electron version with all the latest security patches.
 - The architecture of the application is built according to the security [guides](https://www.electronjs.org/docs/tutorial/security) and best practices.
 - The latest version of the [electron-builder] is used to compile the application.
 
 ### Vite [![Vite version](https://img.shields.io/github/package-json/dependency-version/HermanLederer/vite-electron-builder-svelte/dev/vite?label=%20)][vite]
 
 - [Vite] is used to bundle all source codes. This is an extremely fast packer that has a bunch of great features. You can learn more about how it is arranged in [this](https://youtu.be/xXrhg26VCSc) video.
-- Vite [supports](https://vitejs.dev/guide/env-and-mode.html) reading `.env` files. You can also specify types of your environment variables in [`types/vite-env.d.ts`](types/vite-env.d.ts).
+- Vite [supports](https://vitejs.dev/guide/env-and-mode.html) reading `.env` files. You can also specify types of your environment variables in [`types/env.d.ts`](types/env.d.ts).
 - Hot reloads for `Main` and `Renderer` processes.
 
-Vite provides you with many useful features, such as: `TypeScript`, `TSX/JSX`, `CSS/JSON Importing`, `CSS Modules`, `Web Assembly` and much more.
+Vite provides many useful features, such as: `TypeScript`, `TSX/JSX`, `CSS/JSON Importing`, `CSS Modules`, `Web Assembly` and much more.
 
 [See all Vite features](https://vitejs.dev/guide/features.html).
 
-### TypeScript [![TypeScript version](https://img.shields.io/github/package-json/dependency-version/HermanLederer/vite-electron-builder-svelte/dev/typescript?label=%20)][typescript]
-
-- The Latest TypeScript is used for all source code.
+### TypeScript [![TypeScript version](https://img.shields.io/github/package-json/dependency-version/HermanLederer/vite-electron-builder-svelte/dev/typescript?label=%20)][typescript] (optional)
+- The latest version of TypeScript is used for all the source code.
 - **Vite** supports TypeScript out of the box. However, it does not support type checking.
 - Code formatting rules follow the latest TypeScript recommendations and best practices thanks to [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin).
 
-**This fork does not support the removal of Typescript. Why would you?**
+**[See this discussion](https://github.com/cawa-93/vite-electron-builder/discussions/339)** if you want completely remove TypeScript.
 
 ### Svelte [![Svelte version](https://img.shields.io/github/package-json/dependency-version/HermanLederer/vite-electron-builder-svelte/svelte?label=%20)][svelte]
-
-- Web pages are built using [Svelte]. If you would like to use a different framework I recommend basing it on the [original repo](https://github.com/cawa-93/vite-electron-builder).
+- By default, web pages are built using [Sveltee]. If you would like to use a different framework I recommend basing it on the [original repo](https://github.com/cawa-93/vite-electron-builder).
 - Code formatting rules follow the latest Svelte recommendations and best practices thanks to [eslint-plugin-svelte].
 
-### Continuous Integration
+See [examples of web pages for different frameworks](https://github.com/vitejs/vite/tree/main/packages/create-vite).
 
-- The configured workflow for check the types for each push and PR.
-- The configured workflow for check the code style for each push and PR.
-- **Automatic tests** used [playwright]. Simple, automated test check:
-  - Does the main window created and visible?
-  - Is the main window not empty?
-  - Is dev tools closed?
-  - Is preload script loaded?
+### Continuous Integration
+- The configured workflow will check the types for each push and PR.
+- The configured workflow will check the code style for each push and PR.
+- **Automatic tests** used [Vitest ![Vitest version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/vitest?label=%20&color=yellow)][vitest] -- A blazing fast test framework powered by Vite.
+  - Unit tests are placed within each package and run separately.
+  - End-to-end tests are placed in the root [`tests`](tests) directory and use [playwright].
+
+
 
 ### Continuous delivery
-
-- Each time you push changes to the `main` branch, [`release`](.github/workflows/release.yml) workflow starts, which creates release draft.
+- Each time you push changes to the `main` branch, the [`release`](.github/workflows/release.yml) workflow starts, which creates a release draft.
   - The version is automatically set based on the current date in the format `yy.mm.dd-minutes`.
   - Notes are automatically generated and added to the release draft.
-  - Code signing supported. See [`compile` job in `release` workflow](.github/workflows/release.yml).
-- **Auto-update is supported**. After the release will be published, all client applications will download the new version and install updates silently.
-
-## Status
-
-The origianl template was created to make the [original author's][cawa-93-github] work easier but they are trying to keep in universal with Vue as the default framework. This fork replaces it with Svelte.
-
-[Me][hermanlederer-github] and the [original author][cawa-93-github] are actively involved in its development. But we do not guarantee that this template will be maintained in the future.
-
-**At the moment, there are the following problems:**
-
-- ⚠ Playwright has [**experimental** support for Electron](https://playwright.dev/docs/api/class-electron/).
-- ⚠ Release notes are created automatically based on commit history. [`.github/actions/release-notes`](.github/actions/release-notes) is used for generation. It may not provide some scenarios. If you encounter a problem - write about it.
-- ⏳ The [original author][cawa-93-github] wants to migrate all code base to ESM. But because Nodejs ecosystem is unprepared he has not known whether this will give more benefits or more inconvenience.
-
-Some improvement or problems can be listed in [issues of the original repo](https://github.com/cawa-93/vite-electron-builder/issues).
-
-**Pull requests are welcome**.
+  - Code signing supported. See [`compile` job in the `release` workflow](.github/workflows/release.yml).
+- **Auto-update is supported**. After the release is published, all client applications will download the new version and install updates silently.
 
 ## How it works
-
-The template required a minimum [dependencies](package.json). Only **Vite** is used for building, nothing more.
+The template requires a minimum amount [dependencies](package.json). Only **Vite** is used for building, nothing more.
 
 ### Project Structure
 
 The structure of this template is very similar to the structure of a monorepo.
 
-The entire source code of the program is divided into three modules (packages) that are bundled each independently:
-
+The entire source code of the program is divided into three modules (packages) that are each bundled independently:
 - [`packages/main`](packages/main)
   Electron [**main script**](https://www.electronjs.org/docs/tutorial/quick-start#create-the-main-script-file).
 - [`packages/preload`](packages/preload)
@@ -121,58 +104,110 @@ The entire source code of the program is divided into three modules (packages) t
 
 ### Build web resources
 
-Packages `main` and `preload` are built in [library mode](https://vitejs.dev/guide/build.html#library-mode) as it is a simple javascript.
-`renderer` package build as regular web app.
+The `main` and `preload` packages are built in [library mode](https://vitejs.dev/guide/build.html#library-mode) as it is simple javascript.
+The `renderer` package builds as a regular web app.
 
-The build of web resources is performed in the [`scripts/build.js`](scripts/build.js). Its analogue is a sequential call to `vite build` for each package.
 
 ### Compile App
+The next step is to package and compile a ready to distribute Electron app for macOS, Windows and Linux with "auto update" support out of the box.
 
-Next step is run packaging and compilation a ready for distribution Electron app for macOS, Windows and Linux with "auto update" support out of the box.
+To do this using the [electron-builder]:
+- Using the npm script `compile`: This script is configured to compile the application as quickly as possible. It is not ready for distribution, it is compiled only for the current platform and is used for debugging.
+- Using GitHub Actions: The application is compiled for any platform and ready-to-distribute files are automatically added as a draft to the GitHub releases page.
 
-To do this, using the [electron-builder]:
+### Working with dependencies
+There is one important nuance when working with dependencies.
+At the build stage Vite will analyze your code, find all the imported dependencies, apply tree shaking, optimize and **bundle them inside the output source files**. So when you write something like this:
+```ts
+// source.ts
+import {createApp} from 'vue'
+createApp()
+```
+It turns into:
+```js
+// bundle.js
+function createApp() { /* ... */ }
+createApp()
+```
+Which leaves basically no imports during runtime.
 
-- In npm script `compile`: This script is configured to compile the application as quickly as possible. It is not ready for distribution, is compiled only for the current platform and is used for debugging.
-- In GitHub Action: The application is compiled for any platform and ready-to-distribute files are automatically added to the draft GitHub release.
+**But it doesn't always work**. Vite was designed to work with browser-oriented packages. So it is not able to bundle Node built-in modules, or native dependencies, or some Node.js specific packages, or Electron itself.
 
-### Using Node.js API in renderer
-
-According to [Electron's security guidelines](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content), Node.js integration is disabled for remote content. This means that **you cannot call any Node.js api in the `packages/renderer` directly**. To do this, you **must** describe the interface in the `packages/preload` where Node.js api is allowed:
+Modules that Vite is unable to bundle are forced to be supplied as `external` in `vite.config.js`. External modules are not optimized and their imports remain during runtime.
 
 ```ts
-// packages/preload/src/index.ts
-import { readFile } from "fs/promises";
+// source.ts
+import {writeFile} from 'fs'
+writeFile()
 
-const api = {
-  readConfig: () => readFile("/path/to/config.json", { encoding: "utf-8" }),
-};
-
-contextBridge.exposeInMainWorld("electron", api);
+// bundle.js
+const {writeFile} = require('fs')
+writeFile()
 ```
 
-```ts
-// packages/renderer/src/App.svelte
-import { useElectron } from "/@/use/electron";
+### Using external modules in renderer
+According to [Electron's security guidelines](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content), Node.js integration is disabled for remote content. This means that **you cannot call any Node.js api in the `packages/renderer` directly**. This also means you can't import external modules during runtime in the renderer:
+```js
+// renderer.bundle.js
+const {writeFile} = require('fs') // ReferenceError: require is not defined
+writeFile()
+```
 
-const { readConfig } = useElectron();
+To use external modules in Renderer you **must** describe the interface in the `packages/preload` where the Node.js api is allowed:
+```ts
+// packages/preload/src/index.ts
+import {type BinaryLike, createHash} from 'crypto';
+import {exposeInMainWorld} from './exposeInMainWorld';
+
+exposeInMainWorld('nodeCrypto', {
+  sha256sum(data: BinaryLike) {
+    const hash = createHash('sha256');
+    hash.update(data);
+    return hash.digest('hex');
+  },
+});
+```
+If you use a TypeScript you must add the signature of your method to the contracts:
+```ts
+// packages/preload/contracts.d.ts 
+interface Exposed {
+    nodeCrypto: { 
+        sha256sum(data: import("crypto").BinaryLike): string; 
+    };
+}
+```
+And now, you can safely use the registered method:
+```ts
+// packages/renderer/src/App.vue
+window.nodeCrypto.sha256sum('data')
+```
+
+As a result, the architecture of interaction between all modules is as follows:
+
+```mermaid
+flowchart LR;
+R --> W[Web API]
+R --> BD[Bundled dependencies]
+R[Renderer] -- Call Exposed API --> P[Preload] --> N[Node.js API]
+P --> ED[External dependencies]
+P --> ER[Electron Renderer Process Modules]
+P <-. IPC Messages .-> M[Main] --> EM[Electron Main Process Modules]
 ```
 
 [Read more about Security Considerations](https://www.electronjs.org/docs/tutorial/context-isolation#security-considerations).
 
 ### Modes and Environment Variables
-
 All environment variables set as part of the `import.meta`, so you can access them as follows: `import.meta.env`.
 
-You can also specify types of your environment variables in [`types/vite-env.d.ts`](types/vite-env.d.ts).
+If you are using TypeScript and want to get code completion you must add all the environment variables to the [`ImportMetaEnv` in `types/env.d.ts`](types/env.d.ts).
 
-The mode option is used to specify the value of `import.meta.env.MODE` and the corresponding environment variables files that needs to be loaded.
+The mode option is used to specify the value of `import.meta.env.MODE` and the corresponding environment variables files that need to be loaded.
 
 By default, there are two modes:
-
 - `production` is used by default
 - `development` is used by `npm run watch` script
 
-When running building, environment variables are loaded from the following files in your project root:
+When running the build script, the environment variables are loaded from the following files in your project root:
 
 ```
 .env                # loaded in all cases
@@ -181,7 +216,14 @@ When running building, environment variables are loaded from the following files
 .env.[mode].local   # only loaded in specified env mode, ignored by git
 ```
 
-**Note:** only variables prefixed with `VITE_` are exposed to your code (e.g. `VITE_SOME_KEY=123`) and `SOME_KEY=123` will not. You can access `VITE_SOME_KEY` using `import.meta.env.VITE_SOME_KEY`. This is because the `.env` files may be used by some users for server-side or build scripts and may contain sensitive information that should not be exposed in code shipped to browsers.
+To prevent accidentally leaking env variables to the client, only variables prefixed with `VITE_` are exposed to your Vite-processed code. e.g. the following file:
+
+```
+DB_PASSWORD=foobar
+VITE_SOME_KEY=123
+```
+Only `VITE_SOME_KEY` will be exposed as `import.meta.env.VITE_SOME_KEY` to your client source code, but `DB_PASSWORD` will not.
+
 
 ## Contribution
 
@@ -194,6 +236,8 @@ See [Contributing Guide](contributing.md).
 [typescript]: https://github.com/microsoft/TypeScript/
 [playwright]: https://playwright.dev
 [eslint-plugin-svelte]: https://github.com/sveltejs/eslint-plugin-svelte3
+[vitest]: https://vitest.dev
+[eslint-plugin-vue]: https://github.com/vuejs/eslint-plugin-vue
 [cawa-93-github]: https://github.com/cawa-93/
 [hermanlederer-github]: https://github.com/HermanLederer/
 [cawa-93-sponsor]: https://www.patreon.com/Kozack/

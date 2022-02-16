@@ -7,50 +7,45 @@
   },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
-    "build": "node scripts/build.js",
-    "precompile": "cross-env MODE=production npm run build",
-    "compile": "electron-builder build --config electron-builder.config.js --dir --config.asar=false",
-    "pretest": "npm run build",
-    "test": "node tests/app.spec.js",
+    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
+    "build:main": "cd ./packages/main && vite build",
+    "build:preload": "cd ./packages/preload && vite build",
+    "build:renderer": "cd ./packages/renderer && vite build",
+    "compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
+    "test": "npm run test:main && npm run test:preload && npm run test:renderer && npm run test:e2e",
+    "test:e2e": "npm run build && vitest run",
+    "test:main": "vitest run -r packages/main --passWithNoTests",
+    "test:preload": "vitest run -r packages/preload --passWithNoTests",
+    "test:renderer": "vitest run -r packages/renderer --passWithNoTests",
     "watch": "node scripts/watch.js",
     "lint": "eslint . --ext js,ts,vue",
-    "typecheck-main": "tsc --noEmit -p packages/main/tsconfig.json",
-    "typecheck-preload": "tsc --noEmit -p packages/preload/tsconfig.json",
-    "typecheck-renderer": "svelte-check --tsconfig packages/renderer/tsconfig.json",
-    "typecheck": "npm run typecheck-main && npm run typecheck-preload && npm run typecheck-renderer"
-  },
-  "browserslist": [
-    "Chrome 96"
-  ],
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "pre-push": "npm run typecheck"
-  },
-  "lint-staged": {
-    "*.{js,ts,vue}": "eslint --cache --fix"
+    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
+    "typecheck:renderer": "svelte-check --tsconfig packages/renderer/tsconfig.json",
+    "typecheck": "npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer"
   },
   "devDependencies": {
-    "@sveltejs/eslint-config": "github:sveltejs/eslint-config",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tsconfig/svelte": "^2.0.1",
-    "@types/electron-devtools-installer": "2.2.0",
-    "@typescript-eslint/eslint-plugin": "5.4.0",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
     "cross-env": "7.0.3",
-    "electron": "16.0.1",
-    "electron-builder": "22.14.5",
+    "electron": "17.0.1",
+    "electron-builder": "22.14.13",
     "electron-devtools-installer": "3.2.0",
-    "eslint": "^7.32.0",
-    "lint-staged": "12.1.1",
-    "playwright": "1.16.3",
+    "eslint": "8.9.0",
+    "happy-dom": "2.33.1",
+    "nano-staged": "0.5.0",
+    "playwright": "1.19.1",
     "simple-git-hooks": "2.7.0",
     "svelte": "^3.44.1",
     "svelte-check": "^2.2.8",
     "svelte-preprocess": "^4.9.8",
     "tslib": "^2.3.1",
-    "typescript": "4.5.2",
-    "vite": "2.6.14"
+    "typescript": "4.5.5",
+    "vite": "2.8.3",
+    "vitest": "0.3.6"
   },
   "dependencies": {
-    "electron-updater": "4.6.2"
+    "electron-updater": "4.6.5"
   }
 }
