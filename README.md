@@ -20,7 +20,7 @@ Under the hood is used [Vite] — superfast, nextgen bundler, and [electron-buil
 
 - This fork is maintained by [Herman Lederer][hermanlederer-github]. You can [💖 sponsor them][hermanlederer-sponsor] for continued mainenance of this Svelte fork.
 
-- Found a problem? Pull requests are welcome, but make sure it is is Svelte specific, otherwise consider making a PR to the [original repo](https://github.com/cawa-93/vite-electron-builder). The cahnges will be cloned here.
+- Found a problem? Pull requests are welcome, but make sure it is is Svelte specific, otherwise consider making a PR to the [original repo](https://github.com/cawa-93/vite-electron-builder). The changes will be cloned here.
 
 - If you have ideas, questions or suggestions - **Welcome to [discussions](https://github.com/cawa-93/vite-electron-builder/discussions) of the original repo**. 😊
 
