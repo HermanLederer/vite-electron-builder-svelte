@@ -2,6 +2,16 @@
 
 **Fork of [vite-electron-builder](https://github.com/cawa-93/vite-electron-builder)**
 
+---
+
+### Important notice
+
+Electron is not a good solution to builfding cross-platform apps using WebView UI!
+
+This fork is no logner maintained because I am not interested in, and do not recommend starting new proejcts with Electron. Please checkout out [Tauri](https://tauri.app/), a faster, safer, samller and cleaner alternative. You will not need any templates for it because of its clean DX.
+
+---
+
 [![GitHub issues by-label](https://img.shields.io/github/issues/HermanLederer/vite-electron-builder-svelte/help%20wanted?label=issues%20need%20help&logo=github)](https://github.com/HermanLederer/vite-electron-builder-svelte/issues?q=label%3A%22help+wanted%22+is%3Aopen+is%3Aissue)
 [![Required Node.JS >= v16.13](https://img.shields.io/static/v1?label=node&message=%3E=16.13&logo=node.js&color)](https://nodejs.org/about/releases/)
 [![Required npm >= v8.1](https://img.shields.io/static/v1?label=npm&message=%3E=8.1&logo=npm&color)](https://github.com/npm/cli/releases)
@@ -12,19 +22,6 @@ This is a Svelte specific fork of a template for secure electron applications. W
 
 Under the hood is used [Vite] — superfast, nextgen bundler, and [electron-builder] for compilation.
 
----
-
-### Support
-
-- This template is maintained by [Alex Kozack][cawa-93-github]. You can [💖 sponsor him][cawa-93-sponsor] for continued development of this template.
-
-- This fork is maintained by [Herman Lederer][hermanlederer-github]. You can [💖 sponsor them][hermanlederer-sponsor] for continued mainenance of this Svelte fork.
-
-- Found a problem? Pull requests are welcome, but make sure it is is Svelte specific, otherwise consider making a PR to the [original repo](https://github.com/cawa-93/vite-electron-builder). The cahnges will be cloned here.
-
-- If you have ideas, questions or suggestions - **Welcome to [discussions](https://github.com/cawa-93/vite-electron-builder/discussions) of the original repo**. 😊
-
----
 
 ## Get started
 
